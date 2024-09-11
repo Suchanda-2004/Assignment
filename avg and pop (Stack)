@@ -1,0 +1,62 @@
+//Write a c program to calculate the avg. value of the stack elements.After that pop a value and show the new stack.
+#include<stdio.h>
+#include<stdlib.h>
+#define size 6
+int stack[size];
+int top=-1;
+
+void push(int value){
+	stack[++top]=value;
+}
+int pop(){
+	return stack [top--];
+}
+float avg(){
+	int sum=0,count=0;
+	for(int i=0;i<=top;i++){
+		
+		sum+=stack[i];
+		count++;
+		
+	}
+	return(float) sum/(top+1);
+	
+}
+void newstack(){
+	printf("New stack:");
+	for (int i=0;i<=top;i++){
+		printf("%d",stack[i]);
+		
+	}
+}
+int main(){
+     push(6);
+     push(4);
+     push(2);
+	 push(5);
+	 push(3);
+	 push(1);
+	printf("Average value of the stack elements:%2f\n",avg());
+	
+    int popvalue;
+    printf("Enter the value to be popped:");
+    scanf("%d",&popvalue);
+    
+    for(int i=0;i<=top;top++){
+    	if (stack[i]==popvalue){
+    		for(int j=i;j<top;j++){
+    			stack[j]=stack[j+1];
+			}
+			top--;
+			printf("Popped value :%d\n",popvalue);
+			newstack();
+			return 0;
+		}
+	}
+	
+	
+	
+	
+	return 0;
+	
+}
