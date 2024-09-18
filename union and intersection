@@ -1,0 +1,58 @@
+//Write a c program to implement union and intersection in array.
+#include <stdio.h>
+
+
+void findUnion(int arr1[], int size1, int arr2[], int size2) {
+    int i, j;
+    printf("Union: ");
+
+    
+    for (i = 0; i < size1; i++) {
+        printf("%d ", arr1[i]);
+    }
+
+    
+    for (i = 0; i < size2; i++) {
+        int isPresent = 0;
+        for (j = 0; j < size1; j++) {
+            if (arr2[i] == arr1[j]) {
+                isPresent = 1;
+                break;
+            }
+        }
+        if (!isPresent) {
+            printf("%d ", arr2[i]);
+        }
+    }
+
+    printf("\n");
+}
+
+
+void findIntersection(int arr1[], int size1, int arr2[], int size2) {
+    int i, j;
+    printf("Intersection: ");
+
+    for (i = 0; i < size1; i++) {
+        for (j = 0; j < size2; j++) {
+            if (arr1[i] == arr2[j]) {
+                printf("%d ", arr1[i]);
+                break;
+            }
+        }
+    }
+
+    printf("\n");
+}
+
+int main() {
+    int arr1[] = {1, 3, 4, 6};
+    int arr2[] = {2, 3, 6, 8, 10};
+    int size1 = sizeof(arr1) / sizeof(arr1[0]);
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    findUnion(arr1, size1, arr2, size2);
+    findIntersection(arr1, size1, arr2, size2);
+
+    return 0;
+}
